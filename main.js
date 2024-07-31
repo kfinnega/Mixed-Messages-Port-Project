@@ -1,24 +1,32 @@
-var quotes = [];
+var sayingArr =[
+  [
+    "Don't stop ",
+    "Keep moving "
 
-const fs = require('fs');
-const readline = require('readline');
+  ],
+  [
+    'believing',
+    'trying',
+    'pushing',
+  ],
+  [
+    ' in yourself',
+    ' in each other',
+  ]
+];
 
-async function readQuotes() {
-  const fileStream = fs.createReadStream('quoteFile.txt');
-  const rl = readline.createInterface({
-    input: fileStream,
-    crlfDelay: Infinity
-  });
-  for await (const line of rl) {
-    console.log(`line from file: ${line}`);
-  }
+function createMessage() {
+  let length1 = sayingArr[0].length;
+  let length2 = sayingArr[1].length;
+  let length3 = sayingArr[2].length;
+
+  let index1 = Math.floor(Math.random() * length1);
+  let index2 = Math.floor(Math.random() * length2);;
+  let index3 = Math.floor(Math.random() * length3);
+
+  let message = sayingArr[0][index1].concat(sayingArr[1][index2].concat(sayingArr[2][index3]));
+  return message
 }
 
-// The method that is going to print the qoute to the console
-function printQuote(quote) {
-   console.log(quote);
-}
-
-readQuotes();
-
+console.log(createMessage());
 
